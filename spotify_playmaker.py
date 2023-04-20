@@ -191,7 +191,7 @@ if __name__ == '__main__':
         "--headless",
         action="store_true",
         default=False,
-        help="Run the script in headless mode (default: not headless).",
+        help="Run the script in headless mode (default: headful).",
     )
     args = parser.parse_args()
     playlist_name = args.playlistname
