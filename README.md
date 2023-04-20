@@ -16,6 +16,10 @@ To run this script, you need to have the following:
 - Build the Docker image.
 - Enjoy!
 
+## Results
+
+![Alt text](./sample.png)
+
 ## Usage
 
 To use this script, follow these steps:
