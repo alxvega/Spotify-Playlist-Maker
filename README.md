@@ -28,12 +28,6 @@ Playlist:
 ## Usage
 
 To use this script, follow these steps:
-Create a .env file in the project directory with your login credentials as follows:
-
-```
-EMAIL=myemail@email.com
-PASSWORD=mypassword
-```
 
 Build the Docker container:
 
@@ -41,10 +35,19 @@ Build the Docker container:
 docker build -t spotify-playlist-maker .
 ```
 
+Create a .env file in the project directory with your login info as follows:
+
+```
+EMAIL=myemail@email.com
+PASSWORD=mypassword
+```
+
+This file and any variation of sensitive information are added to .dockerignore and .gitignore to preserve your security.
+
 Run the container with the desired playlist name and artists:
 
 ```
-docker run spotify-playlist-maker -playlistname <playlist_name> -artists "<artist_1>,<artist_2>,...,<artist_n>"
+docker run --env-file .env spotify-playlist-maker -playlistname <playlist_name> -artists "<artist_1>,<artist_2>,...,<artist_n>"
 ```
 
 Replace <playlist_name> with the name you want to give to your playlist, and <artist_1>,<artist_2>,...,<artist_n> with the names of the artists whose albums you want to add to the playlist. Separate the artist names with commas.
@@ -52,7 +55,7 @@ Replace <playlist_name> with the name you want to give to your playlist, and <ar
 For example:
 
 ```
-docker run spotify-playlist-maker -playlistname "Rock" -artists "Metallica, Iron Maiden"
+docker run --env-file .env spotify-playlist-maker -playlistname "Rock" -artists "Metallica, Iron Maiden"
 ```
 
 This script will run in windowed mode by default. You will not see the screen as it will run using a virtual display with Xvfb. It was inteded this was since bugs would appear using Selenium's headless option.

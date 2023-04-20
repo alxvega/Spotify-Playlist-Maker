@@ -165,11 +165,8 @@ def rename_playlist(driver, playlist_name):
     print(f'Renamed to {playlist_name} succesfully')
 
 
-def main(playlist_name, artists, headless):
+def main(playlist_name, artists, headless, email, password):
     """Main function to create a Spotify playlist with the given artists."""
-    load_dotenv()
-    email = os.getenv('EMAIL')
-    password = os.getenv('PASSWORD')
     driver = setup_driver(headless)
     login(driver, email, password)
     create_playlist(driver)
@@ -193,8 +190,12 @@ if __name__ == '__main__':
         default=False,
         help="Run the script in headless mode (default: headful).",
     )
+    parser.add_argument("--email", type=str, help="Spotify email.")
+    parser.add_argument("--password", type=str, help="Spotify password.")
     args = parser.parse_args()
     playlist_name = args.playlistname
     artists = args.artists.split(", ")
     headless = args.headless
-    main(playlist_name, artists, headless)
+    email = args.email
+    password = args.password
+    main(playlist_name, artists, headless, email, password)
