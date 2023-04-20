@@ -1,6 +1,6 @@
 # Spotify Playlist Creator
 
-### This is a Python script that automates the process of creating a Spotify playlist with the albums of the given artists. The purpose of this script is to automate the process of adding all the albums of a single artist directly to a playlist, a feature that is not natively supported by Spotify and can be time-consuming when dealing with a large number of artists.
+#### The purpose of this project is to automate the process of adding all the albums of a single artist directly to a playlist, a feature that is not natively supported by Spotify and can be time-consuming when dealing with a large number of artists.
 
 #
 
