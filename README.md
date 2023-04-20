@@ -18,7 +18,12 @@ To run this script, you need to have the following:
 
 ## Results
 
-![Alt text](./sample.png)
+![Alt text](./pictures/sample.png)
+
+#
+
+Playlist:
+![Alt text](./pictures/playlist.png)
 
 ## Usage
 
