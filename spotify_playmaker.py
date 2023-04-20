@@ -11,7 +11,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium_stealth import stealth
 from seleniumwire import webdriver
-from xvfbwrapper import Xvfb
+
 
 def setup_driver(headless):
     """Setup the Chrome driver with the required options."""
@@ -170,30 +170,15 @@ def main(playlist_name, artists, headless):
     load_dotenv()
     email = os.getenv('EMAIL')
     password = os.getenv('PASSWORD')
-
-    if headless:
-        with Xvfb(width=1280, height=720) as xvfb:
-            os.environ['DISPLAY'] = ':' + str(xvfb.new_display)
-            driver = setup_driver(True)
-            login(driver, email, password)
-            create_playlist(driver)
-            for artist in artists:
-                search_artist(driver, artist)
-                view_albums(driver)
-                save_albums(driver)
-            rename_playlist(driver, playlist_name)
-            print(f'Done')
-    else:
-        driver = setup_driver(False)
-        login(driver, email, password)
-        create_playlist(driver)
-        for artist in artists:
-            search_artist(driver, artist)
-            view_albums(driver)
-            save_albums(driver)
-        rename_playlist(driver, playlist_name)
-        print(f'Done')
-
+    driver = setup_driver(headless)
+    login(driver, email, password)
+    create_playlist(driver)
+    for artist in artists:
+        search_artist(driver, artist)
+        view_albums(driver)
+        save_albums(driver)
+    rename_playlist(driver, playlist_name)
+    print(f'Done')
 
 
 if __name__ == '__main__':
